@@ -174,7 +174,7 @@ xs `minus` ys = if single xs then xs else xs \\ ys
 pruneSolver :: Grid -> [Grid]
 pruneSolver = filter valid . explode . prune . choices
 
--- | A better solver using iterative function fix to get the fixed pointe in the
+-- | A better solver using iterative function fix to get the fixed points in the
 -- list of choices.
 iterativeSolver :: Grid -> [Grid]
 iterativeSolver = filter valid . explode . fix prune . choices
@@ -184,3 +184,35 @@ fix :: Eq a => (a -> a) -> a -> a
 fix f x = if x == x' then x else fix f x'
     where
         x' = f x
+
+-- | Blocked matrices.
+void :: Matrix Choices -> Bool
+void = any (any null)
+
+safeMatrix :: Matrix Choices -> Bool
+safeMatrix m =
+    all consistent (rows m)
+        && all consistent (cols m)
+        && all consistent (boxes m)
+
+consistent :: Row Choices -> Bool
+consistent = nodups . concat . filter single
+
+blocked :: Matrix Choices -> Bool
+blocked m = void m || not (safeMatrix m)
+
+-- | Improved solver using the concept of blocked matrices developed above.
+blockedSolver :: Grid -> [Grid]
+blockedSolver = search . prune . choices
+
+search :: Matrix Choices -> [Grid]
+search m
+    | blocked m = []
+    | all (all single) m = explode m
+    | otherwise = [g | m' <- expand m, g <- search (prune m')]
+
+expand :: Matrix Choices -> [Matrix Choices]
+expand m = [rows1 ++ [row1 ++ [c] : row2] ++ rows2 | c <- cs]
+    where
+        (rows1,row:rows2) = span (all single) m
+        (row1,cs:row2) = span single row
