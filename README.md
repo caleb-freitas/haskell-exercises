@@ -22,7 +22,7 @@
 
 [9. The countdown problem](./src/solutions/TheCountdownProblem.hs)
 
-### Part II. Going Further
+#widget-labrador-luncheon-manicotti## Part II. Going Further
 
 [10. Interactive programming](./src/solutions/InteractiveProgramming.hs)
 
