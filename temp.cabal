@@ -26,6 +26,16 @@ library
                       FirstSteps
                       TypesAndClasses
                       DefiningFunctions
+                      DeclaringTypesAndClasses
+                      TheCountdownProblem
+                      HigherOrderFunctions
+                      RecursiveFunctions
+                      ListComprehensions
+
+                      SudokuSolver
+                      BinaryStringTransmitter
+                      TautologyChecker
+                      VotingAlgorithms 
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -33,7 +43,9 @@ library
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends:    base ^>=4.16.4.0
-    hs-source-dirs:   src
+    hs-source-dirs:   src/solutions
+                      src/examples
+
     default-language: Haskell2010
 
 executable temp

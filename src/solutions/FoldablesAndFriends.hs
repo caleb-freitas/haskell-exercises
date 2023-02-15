@@ -1,0 +1,3 @@
+module FoldablesAndFriends () where
+
+-- | Soon...

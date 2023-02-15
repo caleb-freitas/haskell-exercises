@@ -4,7 +4,6 @@ module VotingAlgorithms
     ) where
 
 import Data.List
-import GHC.Exts (the)
 
 -- First past the post algorithm
 

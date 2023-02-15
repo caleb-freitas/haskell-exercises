@@ -10,7 +10,6 @@ module BinaryStringTransmitter
     ) where
 
 import Data.Char
-import Foreign.C (eNETUNREACH)
 
 -- Make `Int` type more meaningful
 type Bit = Int
