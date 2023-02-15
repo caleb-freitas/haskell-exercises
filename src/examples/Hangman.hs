@@ -1,4 +1,4 @@
-module Hangman () where
+module Hangman (hangman) where
 
 import System.IO (hSetEcho, stdin)
 
