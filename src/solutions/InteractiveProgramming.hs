@@ -33,3 +33,9 @@ adder = do
     n <- readLn :: IO Int
     nums <- sequence $ replicate n readLn
     putStrLn $ "The total is " ++ show (sum nums)
+
+-- | Exercise 5
+-- TODO
+
+-- | Exercise 6
+-- TODO
